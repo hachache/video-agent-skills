@@ -1,5 +1,15 @@
 # video-agent-skills
 
+This adaptation keeps the original 13 skills and local render engine, and adds **frame-by-frame draft review** from Peter Yang's Video Short: a player with a scene timeline, timestamped comments, archived draft versions, and source-time feedback that survives cuts and speed changes. It also normalizes skill metadata for compatible installers. Public sources and licenses are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+After rendering a short, open its review page:
+
+```sh
+node <short-editing-skill>/engine/short.mjs review video-agent/edits/short-demo
+```
+
+See [the review guide](skills/short-editing/review/README.md) for the workflow and options. Review uses Python 3.9+, FFmpeg and the existing engine; it needs no additional subscription. Run `npm test` from this repository to check timeline conversion, draft snapshots, media seeking and feedback persistence.
+
 Free Claude Code skills to script, edit, translate and publish your videos: short-form (YouTube Shorts, TikTok, Instagram Reels) and full YouTube videos.
 
 No app, no server, no subscription. The skills tell Claude how to work, and `short-editing` ships its own render engine (Node + Chrome + ffmpeg, whisper.cpp for the words, all on your computer, macOS, Windows and Linux), with six real shorts made with it as examples. Optional: [Treg](https://treg.to) to audit your Instagram and publish on YouTube, Instagram and TikTok, an ElevenLabs key to translate, Codex to generate images.

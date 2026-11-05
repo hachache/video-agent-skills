@@ -1,8 +1,9 @@
 ---
 name: studio-script
-description: The scriptwriter of the creator's videos - short-form scripts (YouTube Shorts, TikTok, Instagram Reels, 30 to 60 s) in their own voice from video-agent/voice.md, each on a concept proven by the niche's outliers, with 3 scored hooks from 22 formulas, a re-hook, triggers, offer proximity, quality gates, timing at their pace and visual notes, then a humanize pass (invisible characters, AI words in English and French, AI sentence shapes, facts kept). Modes - the week (default), one topic, a funnel or divisive script, a making-of, hook printer, rewrite, humanize, and viral (what over-performs in their niche, scored against each account's median, YouTube free with yt-dlp, TikTok and Instagram through Treg, into video-agent/swipe.md). Use when the user asks for scripts, ideas, this week's videos, a funnel or divisive (clivant) script, a making-of, a hook, a better hook, to rewrite a script, what goes viral, viral hooks, what works in my niche, competitor research, swipe file, outliers, or to humanize any text (sounds like AI, make it sound like me, a caption before posting).
-argument-hint: "[topic | funnel <topic> | making-of <what you did> | hook <topic> | rewrite <script> | viral [@handles] | humanize [check] <text or file>]"
+description: Write short-form video scripts in the creator's voice, using their profile, niche research, scored hooks, timing and visual notes. Use for weekly scripts, video ideas, hooks, rewrites, making-of videos, funnel scripts, competitor research, or making captions sound natural. Supports Shorts, TikTok and Reels.
 allowed-tools: Bash(grep *) Bash(perl -CSD -pi -e *) Bash(yt-dlp *) Bash(treg catalog *) Bash(treg balance)
+metadata:
+  argument-hint: '[topic | funnel <topic> | making-of <what you did> | hook <topic> | rewrite <script> | viral [@handles] | humanize [check] <text or file>]'
 ---
 
 # Studio Script

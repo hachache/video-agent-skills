@@ -1,8 +1,9 @@
 ---
 name: steal
-description: Copies another creator's editing style into a named style that short-editing applies to your own takes. Use when the user says steal, "copy the style of", "edit like @x", "make a style from this reel", "vole le style de", or gives a reel or short as the model for a look. Downloads the reel (yt-dlp, or Treg for Instagram and TikTok), MEASURES the style with ffmpeg instead of eyeballing it (contact sheets, hard cuts per second, a spectrogram for the beat and the sound effects on the cuts, the music level under the voice, the face size and the zooms), writes video-agent/styles/<name>/ (style.json for the engine + STYLE.md), then edits a test video with short-editing and compares it frame by frame with the original.
-argument-hint: "<reel URL or video file> [style name]"
+description: Copies another creator's editing style into a named style that short-editing applies to your own takes. Use when the user says steal, "copy the style of", "edit like @x", "make a style from this reel", "vole le style de", or gives a reel or short as the model for a look. Downloads the reel (yt-dlp, or Treg for Instagram and TikTok), MEASURES the style with ffmpeg instead of eyeballing it (contact sheets, hard cuts per second, a spectrogram for the beat and the sound effects on the cuts, the music level under the voice, the face size and the zooms), writes video-agent/styles/name/ (style.json for the engine + STYLE.md), then edits a test video with short-editing and compares it frame by frame with the original.
 allowed-tools: Bash(yt-dlp *) Bash(ffmpeg *) Bash(ffprobe *) Bash(treg catalog *) Bash(treg balance)
+metadata:
+  argument-hint: <reel URL or video file> [style name]
 ---
 
 # Steal

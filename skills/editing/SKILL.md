@@ -1,7 +1,8 @@
 ---
 name: editing
 description: Entry point for every video job - routes to studio-setup, insta-audit, studio-script, outliers, short-editing, broll, steal, clips, short-translate, codex-images, vox or publish, and continues the project already in progress. Use when the user says /editing, edit, montage, take, short, reel, video, script, audit, publish, or is not sure which video skill to use.
-argument-hint: "[take | url | slug | path] [brief]"
+metadata:
+  argument-hint: '[take | url | slug | path] [brief]'
 ---
 
 # Editing
@@ -10,6 +11,7 @@ Route the request to the one skill that owns it, then do the work with that skil
 
 1. Continue before you start. If this conversation already works on a video (a `video-agent/edits/<slug>/` folder, a take just edited, a week of scripts just written), the request is the next step of that project with the skill already in use: apply the change, rerun the step, keep its files, never start it over.
 2. Otherwise read the request and pick the skill:
+   - An existing draft to watch, approve, comment on, or revise frame by frame: `short-editing`, its frame review workflow. Continue the existing project and preserve its review history.
    - No `video-agent/` folder yet, first time, tools, voice, permissions, accounts, keys: `studio-setup`. An edit asked before any setup: run `studio-setup` first (or at least its tools step).
    - Their Instagram stats, "what works on my account", an audit of an account or of their competitors: `insta-audit`.
    - Scripts, ideas for the week, hooks, rewrite, humanize a text, "sounds like AI", what goes viral in their niche, swipe file: `studio-script` (`viral` for the niche research).

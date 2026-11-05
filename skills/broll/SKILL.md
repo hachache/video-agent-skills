@@ -1,8 +1,9 @@
 ---
 name: broll
 description: The creator's own B-roll (their clips, screen recordings, photos) turned into a library any agent can search in one grep - scanned once with ffprobe and ffmpeg (length, orientation, date, GPS, one contact sheet per clip), tagged by cheap Haiku sub-agents (title, description, mood, keywords, creator on screen), then placed full screen in a short by short-editing. Use for /broll setup, /broll add, /broll use, /broll search, or when the user says "my B-roll", "add these clips", "put my B-roll on this short", "find me a sunset shot".
-argument-hint: "[setup|add|use|search|reject] [folder|files|slug|words]"
 allowed-tools: Bash(ffmpeg *) Bash(ffprobe *) Bash(node -e *) Bash(grep *) Bash(mkdir *) Bash(cp *)
+metadata:
+  argument-hint: '[setup|add|use|search|reject] [folder|files|slug|words]'
 ---
 
 # B-roll

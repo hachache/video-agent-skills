@@ -1,5 +1,12 @@
 .DS_Store
 node_modules/
+__pycache__/
+*.pyc
+.test-output/
+premium-audit.json
+video-agent/.env
+video-agent/takes/
+video-agent/edits/
 # generated on the creator's computer by engine/setup.mjs
 skills/short-editing/.runtime/
 skills/short-editing/assets/music/*.mp3

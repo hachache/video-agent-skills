@@ -1,8 +1,9 @@
 ---
 name: publish
 description: Gets a finished video out on YouTube (Shorts or long), Instagram Reels and TikTok - picks the video, makes the light export for Instagram and TikTok, the cover, the caption and the YouTube title, sets the time, shows the plan, then after the creator's yes publishes through Treg on their own connected accounts (setup included), or hands a ready-to-post kit when Treg isn't set up. Use when the user says publish, post it, schedule, upload to YouTube, put it on Instagram, TikTok, publier, poster, programmer, mets-le en ligne.
-argument-hint: "[<slug or mp4>] [now | <date and time>] [youtube instagram tiktok]"
 allowed-tools: Bash(ffmpeg *) Bash(ffprobe *) Bash(treg --version) Bash(treg connections ls) Bash(treg catalog *) Bash(treg balance)
+metadata:
+  argument-hint: '[<slug or mp4>] [now | <date and time>] [youtube instagram tiktok]'
 ---
 
 # Publish

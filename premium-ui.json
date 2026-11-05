@@ -1,0 +1,11 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["skills/short-editing/review"],
+  "locale": "en",
+  "canonicalMap": "DESIGN.md",
+  "requiredCapabilities": ["Form", "Select/Listbox", "Scrollbar"],
+  "ownership": {"Select/Listbox": "native"},
+  "requiredCommands": ["unit"],
+  "commands": {"unit": "npm test"},
+  "evidence": {"failurePaths": "tests/test_review.py"}
+}

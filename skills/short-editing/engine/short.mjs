@@ -10,6 +10,7 @@
 //   node short.mjs audio   <project>            music bed + SFX + ducked voice -> assets/mix.wav
 //   node short.mjs final   <project>            mux, poster, QC -> output/<slug>.mp4
 //   node short.mjs all     <project>            render (audio mixed beside it) + final
+//   node short.mjs review  <project> [--no-open] [--video output/file.mp4]   frame comments on an immutable draft
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -1001,7 +1002,8 @@ async function final() {
   log(`final: ${out}`);
 }
 
-const run = { init, words, prepare, rough, stills, capture, render, audio, final, preview, all: async () => {
+const run = { init, words, prepare, rough, stills, capture, render, audio, final, preview,
+  review: async () => (await import('./review.mjs')).review(PROJ, loadSpec(), argv.slice(2)), all: async () => {
   // the mix does not need the render: it runs beside it, in its own process (its DSP would stall this event loop, which
   // streams the encoded units out of Chrome)
   const a = new Promise((res, rej) => { const p = spawn(process.execPath, [fileURLToPath(import.meta.url), 'audio', ...process.argv.slice(3)], { stdio: 'inherit' });

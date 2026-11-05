@@ -1,8 +1,9 @@
 ---
 name: short-translate
 description: Translates a talking-head take (or a finished video) into another language with the creator's own cloned voice through ElevenLabs Dubbing, using their ElevenLabs API key - sets the key up, trims the take first so no stutter is paid for, estimates the minutes, sends it after a yes, waits, lays the dubbed voice back on the image, then hands the translated take to short-editing for captions in the new language. Use when the user says translate, dub, dubbing, English version, Spanish version, traduis, version anglaise, doublage, ElevenLabs, or wants a second account in another language.
-argument-hint: "<take, slug or mp4> <target language> [from <source language>]"
 allowed-tools: Bash(ffmpeg *) Bash(ffprobe *)
+metadata:
+  argument-hint: <take, slug or mp4> <target language> [from <source language>]
 ---
 
 # Short Translate

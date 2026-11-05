@@ -1,8 +1,9 @@
 ---
 name: studio-setup
 description: Sets up the creator's video editing studio, for shorts and YouTube videos, on their computer and in their project - tools, the video-agent/ folder, the render engine, the creator's voice.md, their default editing style (an onboarding on their colors, paper, fonts, captions, sound, Instagram CTA, real tool logos, logo and end card, with a preview on their own footage), permissions, and the optional accounts (Treg for Instagram, TikTok and YouTube, an ElevenLabs key, Codex). Use when the user says setup, onboarding, install, "start here", configure, connect my account, Treg, first time using studio-script, short-editing, publish or any video skill, or wants to update their voice, niche, CTA, brand color, look, font, captions, sound effects, logo or tool logos (`/studio-setup style`). Checks Node, ffmpeg, yt-dlp and git with install commands for macOS, Windows and Linux, writes voice.md from their own videos or a short interview, pre-approves the tool commands in .claude/settings.json.
-argument-hint: "[tools | engine | voice | style | permissions | treg | keys]"
 allowed-tools: Bash(node *) Bash(ffmpeg -version) Bash(ffprobe -version) Bash(yt-dlp --version) Bash(deno --version) Bash(git --version) Bash(codex --version) Bash(treg --version)
+metadata:
+  argument-hint: '[tools | engine | voice | style | permissions | treg | keys]'
 ---
 
 # Studio Setup

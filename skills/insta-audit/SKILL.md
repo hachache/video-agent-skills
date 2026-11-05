@@ -1,8 +1,9 @@
 ---
 name: insta-audit
 description: Audits an Instagram account through Treg. By default the creator's own account, free - installs Treg if needed, connects their Instagram, pulls the last 30 to 50 reels with their real stats (views, reach, average watch time, saves, shares, comments) and the account's reach over 28 days, finds what over-performs against their own median, looks at the first seconds of the best and worst reels, and writes video-agent/audit.md with the 3 changes to make. With a handle or competitors, a full report - outliers, up to 5 relevant competitors and a sourced HTML report, with the cost said first. Use when the user says audit, audit my Instagram, analyse my account, my stats, why my reels don't work, my best reels, Instagram insights, connect my Instagram, audit @someone, or competitor analysis.
-argument-hint: "[setup | <number of reels> | @handle [period] [competitors]]"
 allowed-tools: Bash(treg --version) Bash(treg connections ls) Bash(treg catalog *) Bash(treg balance) Bash(ffmpeg *) Bash(ffprobe *)
+metadata:
+  argument-hint: '[setup | <number of reels> | @handle [period] [competitors]]'
 ---
 
 # Insta Audit

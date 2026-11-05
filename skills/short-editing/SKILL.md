@@ -1,11 +1,14 @@
 ---
 name: short-editing
 description: Edits a talking-head take end to end into a paper-style motion design short (1080x1920, also 1:1 and 16:9) with its own render engine (Node + Chrome + ffmpeg, free, offline). Use when the user says edit, cut, captions, subtitles, motion design, montage, "make it a short", render, or gives a recording from video-agent/takes/. Transcribes locally with word timings (whisper.cpp, or ElevenLabs when a key is set), cuts every silence, lays the boards on a textured paper above the camera card (counters, terminals, logos, trees, real screens, HTML motion components), word-by-word captions, a calm music bed, a few designed hits, -14 LUFS, and writes the mp4, an .srt and the post copy.
-argument-hint: "<take file or slug> [9:16 | 1:1 | 16:9] [style <name>] [brief]"
 allowed-tools: Bash(node *) Bash(ffmpeg *) Bash(ffprobe *) Bash(open video-agent/edits/*)
+metadata:
+  argument-hint: <take file or slug> [9:16 | 1:1 | 16:9] [style <name>] [brief]
 ---
 
 # Short Editing
+
+For comments on an existing draft, use the [frame review workflow](review/README.md) directly. Run `node <skill>/engine/short.mjs review <project>`, read `files/review/feedback.md`, apply the requested changes in SOURCE time, and render the next version. Draft approval does not authorize publication.
 
 One raw take in, one finished video out: `video-agent/edits/short-<slug>/output/short-<slug>.mp4`.
 
@@ -129,6 +132,8 @@ Render + audio (ducked voice, music bed, SFX, mixed beside the render) + final (
 - Sound: the voice on top, the bed breathing between sentences, hits only on real payoffs, no whooshes.
 
 ## 7. Deliver
+
+For a review round, run `node <skill>/engine/short.mjs review video-agent/edits/short-<slug>`. The page supports frame stepping, comments, themes and approval. Each reviewed draft and its notes are kept in `files/review/versions/`. Use the saved source times when changing the spec; an inserted segment is identified by `p+`, `iK+` or `o+`. Read [the review guide](review/README.md) before the first round.
 
 In `video-agent/edits/short-<slug>/output/`: `short-<slug>.mp4` and its poster. Then write next to them:
 

@@ -1,8 +1,9 @@
 ---
 name: clips
 description: Turns one long video (YouTube link, podcast, webinar, livestream, or a local file) into finished vertical shorts. Use when the user says long to short, repurpose, long video to shorts, clips from my video, podcast clips, cut my YouTube video into shorts, or gives a long video link. Finds clips that stand alone (one idea, 20 to 60 seconds), scores them, cuts them and edits each one with short-editing (split-screen paper look, captions, cuts, hook, boards, 1080x1920), and writes new scripts in the studio-script format from the ideas too spread out to clip. Reads YouTube captions and chapters with yt-dlp, or transcribes a local file with the short-editing engine (whisper.cpp, free, offline).
-argument-hint: "<YouTube link or video file>"
 allowed-tools: Bash(node *) Bash(yt-dlp *) Bash(ffmpeg *) Bash(ffprobe *)
+metadata:
+  argument-hint: <YouTube link or video file>
 ---
 
 # Clips

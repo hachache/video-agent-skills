@@ -1,8 +1,9 @@
 ---
 name: codex-images
 description: Generates images with Codex (OpenAI's coding agent and its built-in image tool, included in a ChatGPT plan) - YouTube thumbnails, covers, B-roll stills, board images, profile pictures - one Codex job per image, several in parallel, with the creator's photos as reference when the face matters, then copies them into the project with a manifest. Use when the user says generate an image, a thumbnail, a cover, make me a visual, codex images, génère une image, miniature, or when publish or short-editing needs an image.
-argument-hint: "<what to make> [x<count>] [ref <photo>...] [for <slug>]"
 allowed-tools: Bash(codex --version) Bash(codex login status) Bash(ls *) Bash(cp *) Bash(sips *) Bash(ffprobe *)
+metadata:
+  argument-hint: <what to make> [x<count>] [ref <photo>...] [for <slug>]
 ---
 
 # Codex Images

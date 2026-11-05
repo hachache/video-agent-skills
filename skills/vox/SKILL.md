@@ -1,8 +1,9 @@
 ---
 name: vox
 description: Turns one photo into a cinematic paper-collage animation in the style of Vox explainer documentaries (halftone cut-outs with a white scissor border, torn paper, aged paper grain, stop-motion moves, slow camera push-in). Codex generates the paper layers with the user's ChatGPT plan, the real photo is cut out and printed as halftone by code, an HTML page animates everything and is captured to an MP4 (1080x1920 by default). Use when the user says vox, Vox style, "anime cette photo", "animate this photo", paper collage animation, documentary collage, or sends a photo and an animation idea; also to change an animation already made ("do it with Napoleon", "add a train", "make it night").
-argument-hint: "<photo> <animation idea> [9:16|16:9|1:1] [<seconds>s]"
 allowed-tools: Bash(codex --version) Bash(codex login status) Bash(ffmpeg *) Bash(ffprobe *) Bash(node *) Bash(ls *) Bash(cp *) Bash(mkdir *)
+metadata:
+  argument-hint: <photo> <animation idea> [9:16|16:9|1:1] [<seconds>s]
 ---
 
 # Vox
