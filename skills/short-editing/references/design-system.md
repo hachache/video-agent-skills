@@ -1,5 +1,12 @@
 # Design system: paper, one blue, Apple-calm motion
 
+These are the original **Paper** conventions. They are a maintained look, not
+universal restrictions on every short. An explicit creator style or the project's
+saved Documentary, Kinetic or Studio direction takes precedence for palette,
+typography, depth, transitions and motion. See [art-direction.md](art-direction.md).
+Frame-exact timing, legibility, source accuracy and unobstructed captions apply
+across directions.
+
 ## Palette (engine/lib/kit.js `C`)
 
 | token | hex | use |

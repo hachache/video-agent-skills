@@ -11,6 +11,8 @@
 //   node short.mjs final   <project>            mux, poster, QC -> output/<slug>.mp4
 //   node short.mjs all     <project>            render (audio mixed beside it) + final
 //   node short.mjs review  <project> [--no-open] [--video output/file.mp4]   frame comments on an immutable draft
+//   node short.mjs direct  <project> <direction>   choose paper, documentary, kinetic or studio
+//   node short.mjs motion  <project> <component> [--config source/content.json]   build a local motion page
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -32,7 +34,7 @@ const argv = process.argv.slice(2);
 const cmd = argv[0], PROJ = argv[1] && path.resolve(argv[1].replace(/^~/, os.homedir()));
 const flag = (k, d) => { const i = argv.indexOf('--' + k); return i < 0 ? d : (argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : true); };
 const pos = argv.slice(2).filter((a, i, A) => !a.startsWith('--') && !(A[i - 1] || '').startsWith('--'));
-if (!cmd || !PROJ) { console.log(fs.readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 10).join('\n')); process.exit(1); }
+if (!cmd || !PROJ) { console.log(fs.readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 16).join('\n')); process.exit(1); }
 
 // Be a good citizen: low priority for us and every child (ffmpeg, Chrome inherit it).
 try { os.setPriority(0, 15); } catch {}
@@ -691,6 +693,7 @@ async function capture() {
     await page.addStyleTag({ content: faces });
     await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load().catch(() => {})))
       .then(() => Promise.all([...document.images].map(i => i.decode().catch(() => {})))));
+    await page.evaluate(() => window.MOTION_READY || Promise.resolve());
     if (!(await page.evaluate(() => typeof window.setT === 'function'))) throw new Error(`${html}: no window.setT(t)`);
     for (let i = 0; i < n; i++) {
       await page.evaluate(t => window.setT(t), i / fps);
@@ -1003,6 +1006,8 @@ async function final() {
 }
 
 const run = { init, words, prepare, rough, stills, capture, render, audio, final, preview,
+  direct: async () => (await import('./direction.mjs')).direct(PROJ, argv.slice(2)),
+  motion: async () => (await import('./direction.mjs')).makeMotion(PROJ, argv.slice(2)),
   review: async () => (await import('./review.mjs')).review(PROJ, loadSpec(), argv.slice(2)), all: async () => {
   // the mix does not need the render: it runs beside it, in its own process (its DSP would stall this event loop, which
   // streams the encoded units out of Chrome)

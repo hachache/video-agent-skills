@@ -1,5 +1,10 @@
 # The edit style
 
+The conventions below describe the original Paper look. Follow the creator's
+explicit instructions and `source/direction.json` first. For another direction,
+use [art-direction.md](art-direction.md) and its palette, typography and rhythm;
+do not carry Paper's visual prohibitions into an unrelated style.
+
 One take of a person talking, turned into a fast, clean short that holds attention with the sound off. The same rules every time, so a creator can post daily. The colors, fonts, captions, grade and pace come from the creator's style (`video-agent/styles/<name>/style.json`, keys in [style-schema.md](style-schema.md), starting looks in `assets/looks.json`); a rule written in the style's `notes` wins over this page.
 
 ## Cuts

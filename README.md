@@ -1,6 +1,18 @@
 # video-agent-skills
 
-This adaptation keeps the original 13 skills and local render engine, and adds **frame-by-frame draft review** from Peter Yang's Video Short: a player with a scene timeline, timestamped comments, archived draft versions, and source-time feedback that survives cuts and speed changes. It also normalizes skill metadata for compatible installers. Public sources and licenses are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+This adaptation keeps the original 13 skills and local render engine, adds **four visual directions and reusable motion components**, and includes **frame-by-frame draft review** from Peter Yang's Video Short. Choose a visual language, build a title, phrase relay, chart or comparison locally, then review the result with timestamped comments and archived versions. Public sources and licenses are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Visual direction
+
+Paper keeps the original tactile look. Documentary adds editorial type and evidence-led pacing; Kinetic uses bold type and clipped reveals; Studio adds measured depth and product-focused assembly. Each direction has its own type, palette and movement settings. Explicit creator choices and spec overrides still win.
+
+```sh
+node <short-editing-skill>/engine/short.mjs direct <project> documentary
+node <short-editing-skill>/engine/short.mjs motion <project> title-reveal --config source/hook.json
+node <short-editing-skill>/engine/short.mjs capture <project> source/title-reveal.html --dur 3.6
+```
+
+The motion kit adapts selected public techniques from LottieFiles, iart.ai, Video Shotcraft and HyperFrames. It uses project-local fonts and the existing renderer, with no additional runtime dependency or subscription. See [art direction and motion](skills/short-editing/references/art-direction.md) for configuration, source-time integration and style history. Generate a four-direction comparison with `node scripts/render-motion-demo.mjs <output-directory>`.
 
 After rendering a short, open its review page:
 
@@ -28,7 +40,7 @@ Not sure which skill to use next? Type `/editing <what you want>`: it picks the 
 
 ![The default edit: split screen, boards on paper, captions on the seam, comment CTA](assets/default-render.png)
 
-Every short comes out in the same finished look, with no setting to touch:
+The original Paper direction remains available with these defaults:
 
 - **Split screen**: a textured paper on top, the camera as a card under one fixed seam.
 - **Hard cuts between views**: split, paper only for the big moments, full camera for the stories, a punch-in that alternates on every cut.

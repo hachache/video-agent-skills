@@ -12,6 +12,7 @@ Route the request to the one skill that owns it, then do the work with that skil
 1. Continue before you start. If this conversation already works on a video (a `video-agent/edits/<slug>/` folder, a take just edited, a week of scripts just written), the request is the next step of that project with the skill already in use: apply the change, rerun the step, keep its files, never start it over.
 2. Otherwise read the request and pick the skill:
    - An existing draft to watch, approve, comment on, or revise frame by frame: `short-editing`, its frame review workflow. Continue the existing project and preserve its review history.
+   - Art direction, animated typography, visual rhythm, or a Documentary/Kinetic/Studio look: `short-editing`, its `references/art-direction.md`. Work in the existing project; use `direct` and `motion` for local presets and reusable components.
    - No `video-agent/` folder yet, first time, tools, voice, permissions, accounts, keys: `studio-setup`. An edit asked before any setup: run `studio-setup` first (or at least its tools step).
    - Their Instagram stats, "what works on my account", an audit of an account or of their competitors: `insta-audit`.
    - Scripts, ideas for the week, hooks, rewrite, humanize a text, "sounds like AI", what goes viral in their niche, swipe file: `studio-script` (`viral` for the niche research).

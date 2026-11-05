@@ -1,6 +1,6 @@
 ---
 name: short-editing
-description: Edits a talking-head take end to end into a paper-style motion design short (1080x1920, also 1:1 and 16:9) with its own render engine (Node + Chrome + ffmpeg, free, offline). Use when the user says edit, cut, captions, subtitles, motion design, montage, "make it a short", render, or gives a recording from video-agent/takes/. Transcribes locally with word timings (whisper.cpp, or ElevenLabs when a key is set), cuts every silence, lays the boards on a textured paper above the camera card (counters, terminals, logos, trees, real screens, HTML motion components), word-by-word captions, a calm music bed, a few designed hits, -14 LUFS, and writes the mp4, an .srt and the post copy.
+description: Edit recordings into finished shorts or YouTube videos with local transcription, cuts, captions, music and a Node + Chrome + FFmpeg render engine. Use for video editing, montage, motion graphics, visual direction, typography, rendering or frame review. Includes Paper, Documentary, Kinetic and Studio directions plus reusable, deterministic motion components. Deliver MP4, subtitles and post copy; preserve the direction and review history of an existing draft.
 allowed-tools: Bash(node *) Bash(ffmpeg *) Bash(ffprobe *) Bash(open video-agent/edits/*)
 metadata:
   argument-hint: <take file or slug> [9:16 | 1:1 | 16:9] [style <name>] [brief]
@@ -12,15 +12,16 @@ For comments on an existing draft, use the [frame review workflow](review/README
 
 One raw take in, one finished video out: `video-agent/edits/short-<slug>/output/short-<slug>.mp4`.
 
-The engine ships in this skill folder (`<skill>` below): `<skill>/engine/short.mjs`. It is a deterministic canvas renderer driven by ONE file per short, `source/spec.js`. The design is a paper stage on top and the camera below, one accent color, springs that never overshoot, no pulse, no bounce. Everything runs on the creator's computer, macOS, Windows or Linux: Node 20+, ffmpeg, a Chrome (or the headless Chromium setup installs), whisper.cpp.
+The engine ships in this skill folder (`<skill>` below): `<skill>/engine/short.mjs`. It is a deterministic canvas renderer driven by `source/spec.js`, with arbitrary frame-driven HTML motion components. Paper is the original look; Documentary, Kinetic and Studio provide other directions. Everything runs on the creator's computer, macOS, Windows or Linux: Node 20+, ffmpeg, a Chrome (or the headless Chromium setup installs), whisper.cpp.
 
 Read before writing a spec:
 
 - [references/shorts-codes.md](references/shorts-codes.md): format, safe zones, hook and pace
-- [references/design-system.md](references/design-system.md): palette, motion, paper, what is forbidden
+- [references/art-direction.md](references/art-direction.md): choose a direction, plan the sequence, build reusable motion components; read for a new video or visual restyling
+- [references/design-system.md](references/design-system.md): the original Paper look; its taste rules apply when that direction is selected
 - [references/scene-library.md](references/scene-library.md): every scene and item, every parameter, the time keys
 - [references/music.md](references/music.md): the 8 beds, which fits which hook, where to start it
-- [references/style.md](references/style.md): the house rules of the edit
+- [references/style.md](references/style.md): original Paper conventions; an explicit project direction takes precedence
 - [examples/](examples/README.md): real shorts made with this engine (spec, components, contact sheets). Open the one closest to the request before planning: it is the quality bar.
 
 ## How to run it
@@ -28,6 +29,7 @@ Read before writing a spec:
 - Talk in the creator's language (`creator.lang` of the style, else `video-agent/voice.md`, else English). Say in one line what each long step does and how long it takes.
 - `<slug>`: lowercase, dashes, no dots or spaces.
 - Every command runs from the project root (the folder that holds `video-agent/`).
+- For a new short, infer a suitable direction from the subject and brief, then save it with `direct` after `init`. Preserve an existing creator choice. Before authoring, record the message, evidence, typography, movement and shot rhythm in `source/direction-brief.md`. Use the generated motion kit when it fits; custom components remain available.
 
 ## 0. Setup (first time only, then a 1 s check)
 
@@ -51,6 +53,8 @@ No audio stream: stop and say so. Then create the project:
 node <skill>/engine/short.mjs init video-agent/edits/short-<slug> --source "<take>" [--style <name>]
 ```
 
+For a chosen visual direction, run `node <skill>/engine/short.mjs direct video-agent/edits/short-<slug> documentary` (or `paper`, `kinetic`, `studio`). Add `--keep-brand` when retaining the creator's colors and fonts. This updates only this project's style and archives its previous snapshot. Read [art-direction.md](references/art-direction.md) for motion commands and content fields.
+
 - The style: `style <name>` in the request = `video-agent/styles/<name>/style.json`, passed as `--style <name>` (only when that folder exists: an unknown name stops `init`, so list `video-agent/styles/` instead). Without it, `init` takes the default one (`video-agent/style.json` names it). No style at all: first write `video-agent/styles/default/style.json` = `{"version": 1, "name": "default"}` plus the `style` of the `default` look of `<skill>/assets/looks.json` (system font, camera full width, mono caps captions on a black band), and `video-agent/style.json` = `{"default": "default"}`, then say once that `/studio-setup style` makes it theirs in 2 minutes.
 - `init` makes `assets/ files/ source/ output/ stills/`, copies the take to `assets/source.mp4`, frames `cam` on the face, writes the starter `source/spec.js` and snapshots the style into `source/style.json` (engine defaults < style < spec: the spec only sets what differs for this one short). The style's `assets/` (logos, images) are copied into the project.
 - Format: `9:16` by default. `1:1` = `format: 'square'` (X feed), `16:9` = `format: 'wide'` in the spec.
@@ -72,15 +76,15 @@ Author `source/spec.js` from `files/words.md`. All times are SOURCE seconds; the
 Plan the beats first, in a comment block at the top of the spec:
 
 - **Hook** (first 2 s): readable on the first frame, never blank paper at t=0. It adds to the spoken hook, never repeats it.
-- **Something changes every 2 to 4 s**: a new board, a counter that counts, a terminal that types, a logo that lands, a line struck. Each on the exact word it illustrates (`at` = that word's source time).
+- **Pace follows the thought**: change the shot when the message, evidence or emotional beat changes. A 2 to 4 s beat is a useful starting point, not a timer. Let a proof or reaction remain readable. Place a counter, terminal, annotation or motion component on the word it illustrates (`at` = that word's source time).
 - **Pick the item from what is said** (all in scene-library): a figure = `counter` (`countFrom`/`countTo`, `strikeAt` when it dies); a command or a prompt = `term` (`typeFrom`, `typeTo`, `out` lines); a folder or a list of parts = `tree`; a tool named = its real `logo`; a result = `check`; a real screen = `screen` (zoom keys + rings on the number they read); a tweet = `tweet`; before / after = two boards or `bars`; the big payoff = `stat` or a board with one huge `text` and an `emph` word.
 - **Camera**: `layout.keys: [[t, seam]]`, seam 1160 = split (paper above, camera card below), 1920 = paper alone, 0 = full camera. Full camera only for the direct lines (a story, a reaction, the CTA) and for 5 s or more of SHORT time; a style with a fixed `layout.seam` keeps that one size all along.
-- **Every beat is an action**, never an image sitting there. A software idea (source code, privacy, price, speed) is played in a recreated UI: code that scrolls then blacks out line by line, a lock that closes, a price that drops to 0 under a stamp. A platform named with a number is its real interface recreated and animated (the GitHub repo page, the stars curve settling on the real figure). Never a screenshot pasted as an image (even zoomed or circled), a lone logo, a text card or a still illustration: a screenshot is only a reference to rebuild in HTML.
-- **The hook gets the most work**: a 2 or 3 act mini story with a reversal, several layers moving together, an impact (stamp + thud) on each keyword, the payoff as a badge. For example: the big apps crush the viewer's app under a REPLACED stamp; on the turning word ("now") it flips, the viewer's app becomes the giant. A hook that places one object and slides it is not enough: rebuild it richer, never tweak it.
+- **Every beat has a purpose**: use motion to reveal, compare or explain. Real footage, screen recordings, screenshots and photographs may carry evidence; reframe or annotate them when useful. Recreate a UI only when animation calls for it, and preserve its real data. Use typography as the main subject when that is the selected direction.
+- **The hook gets the most work**: communicate the promise on frame zero and create a reason to keep watching. A reversal, an authentic result, a question or a typographic reveal can carry it. Match its density to the direction; add layers only when they help the viewer understand.
 - **Motion components**: what the library cannot draw well (a real app in its own UI, an Instagram comment sheet, a notification, a GitHub repo page, a software idea, the hook's mini story, an illustration that acts) becomes an HTML page with `window.setT(t)`, captured into a clip (step 3b). The examples hold a dozen of them to copy.
 - **Captions**: on by default, on the seam. `captions.emph` = the words in the accent color, `captions.hide: [[a, b]]` over a board that carries the same words.
 - **Music**: one bed from [music.md](references/music.md) picked by the hook's emotion, `music: { bed: '<id>', offset }`. Never the same bed as the previous short.
-- **Sound**: `sfx: { swish: 0, accents: 0, extra: [[t, 'thud', -6]] }`: no movement noise, a `thud` or `pop` only on a real payoff. Bigger moments (the hook cut, the payoff, a shatter) take a bundled file from `assets/sfx/` (`zhhh`, `impact-boom`, `riser`, `glass-shatter`...), all in [references/sfx.md](references/sfx.md). Never generate a sound with ElevenLabs unless the creator asks for one the library lacks.
+- **Sound**: voice first, music under it, designed accents on meaningful payoffs. Paper uses few thuds or pops; a kinetic sequence may use a transition sound when motivated. Use bundled files from `assets/sfx/` (see [references/sfx.md](references/sfx.md)); generating additional sound is optional and follows the creator's request.
 - **Real logos, always**: every tool or app named on screen shows its real icon in `assets/logos/<name>.png` (the App Store icon, the official site or repo), never a letter glyph, never an emoji, never a look-alike. Download it into the project and say from where.
 - No em-dashes in any on-screen text.
 
@@ -121,10 +125,10 @@ Render + audio (ducked voice, music bed, SFX, mixed beside the render) + final (
 ## Quality bar (every contact sheet)
 
 - The hook reads on the first frame.
-- Every beat acts. On each beat's still, ask « is something happening, or is it an image sitting there? ». A sitting image (a screenshot, a still illustration, a logo next to a counter, a text card) is a component to redo before rendering.
+- Every beat advances the message. A still image or a quiet hold can be deliberate; avoid accidental dead time and motion that competes with the subject.
 - Every board fills the paper: big mobile text (nothing under 34 px, captions about 84 px), 1 to 3 lines, nothing cut at the edges, nothing in the safe zones of [shorts-codes.md](references/shorts-codes.md).
 - Captions never overlap a card, a CTA or a chat composer (`captions.hide`).
-- One accent color per moment; accent words only from `captions.emph` and `emph`.
+- Follow the resolved direction and brand palette. Keep one clear emphasis role; use `captions.emph` and `emph` for meaningful words.
 - Cards never change size; the camera card never resizes. A full-camera stretch lasts 5 s or more.
 - No ghost of the old beat under the new one, no counter parked on 0, no two values stacked in one slot.
 - Camera colors natural: bright warm skin, never grey or greenish (`stills/grade.jpg`).

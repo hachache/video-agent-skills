@@ -1,5 +1,11 @@
 # Sub-agents: motion components in parallel
 
+The supervisor passes the resolved project direction and its brief to every
+component task. The original Paper examples below are defaults only: replace
+their font, no-overshoot and screenshot conventions when the selected direction
+or the creator calls for something else. Keep deterministic `window.setT(t)`,
+frame-size, safe-area and file-ownership requirements in every direction.
+
 The main session is the supervisor. It runs on the strongest model, plans the beats, owns `spec.js` and runs every engine step. Each sub-agent builds ONE motion component, all of them at the same time, so a short full of custom UI takes the time of its slowest component instead of the sum of all of them.
 
 ## Who does what

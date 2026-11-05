@@ -1,0 +1,34 @@
+{
+  "paper": {
+    "label": "Paper",
+    "intent": "Explain one idea on a tactile stage; calm, precise, familiar.",
+    "motion": { "enter": 0.48, "stagger": 0.16, "travel": 36, "leadScale": 1.25 },
+    "palette": { "background": "#F1EEE6", "ink": "#14161B", "accent": "#258EFF", "muted": "#5C5F68", "surface": "#FCFBF8" },
+    "type": { "display": "Inter", "body": "DM Sans", "weight": 800 },
+    "style": { "colors": { "paper": "#F1EEE6", "ink": "#14161B", "accent": "#258EFF" }, "font": { "family": "Inter" }, "paper": { "bg": "paper", "grain": 1 }, "display": { "font": "Inter", "weight": 800 }, "captions": { "style": "sticker", "size": 84 }, "pace": { "speed": 1.15 } }
+  },
+  "documentary": {
+    "label": "Documentary",
+    "intent": "Let the evidence lead: editorial type, a clear source, patient reveals.",
+    "motion": { "enter": 0.72, "stagger": 0.24, "travel": 26, "leadScale": 1.12 },
+    "palette": { "background": "#E9EDF2", "ink": "#13243A", "accent": "#BB3824", "muted": "#526276", "surface": "#F8FAFC" },
+    "type": { "display": "Instrument Serif", "body": "DM Sans", "weight": 400 },
+    "style": { "colors": { "paper": "#E9EDF2", "ink": "#13243A", "accent": "#BB3824" }, "font": { "family": "DM Sans" }, "paper": { "bg": "paper", "grain": 0.25, "depth": 0.6 }, "display": { "font": "Instrument Serif", "weight": 400, "flat": true }, "captions": { "style": "clean", "font": "DM Sans", "size": 64 }, "pace": { "speed": 1, "tighten": { "sentence": 0.2, "comma": 0.1, "word": 0.06 } } }
+  },
+  "kinetic": {
+    "label": "Kinetic",
+    "intent": "Make the words carry the scene: bold scale, clipped reveals, deliberate hard cuts.",
+    "motion": { "enter": 0.32, "stagger": 0.12, "travel": 64, "leadScale": 1.65 },
+    "palette": { "background": "#193CE6", "ink": "#FFF9EC", "accent": "#F4EB90", "muted": "#D8DEFF", "surface": "#112EA9" },
+    "type": { "display": "Archivo Black", "body": "DM Sans", "weight": 400 },
+    "style": { "colors": { "paper": "#193CE6", "ink": "#FFF9EC", "accent": "#F4EB90", "sheet": "#112EA9", "ink2": "#D8DEFF" }, "font": { "family": "DM Sans" }, "paper": { "bg": "clean", "grain": 0, "depth": 0.5 }, "display": { "font": "Archivo Black", "weight": 400, "flat": true }, "captions": { "style": "band", "font": "Archivo", "size": 78, "bg": "#112EA9", "color": "#FFF9EC", "hi": "#F4EB90" }, "pace": { "speed": 1.06, "tighten": { "sentence": 0.1, "comma": 0.06, "word": 0.04 } } }
+  },
+  "studio": {
+    "label": "Studio",
+    "intent": "Show a product with depth and restraint: measured assembly, soft planes, clean hierarchy.",
+    "motion": { "enter": 0.58, "stagger": 0.18, "travel": 42, "leadScale": 1.3 },
+    "palette": { "background": "#EEEAF3", "ink": "#242136", "accent": "#6442BD", "muted": "#655F78", "surface": "#FAF8FF" },
+    "type": { "display": "Bricolage Grotesque", "body": "DM Sans", "weight": 750 },
+    "style": { "colors": { "paper": "#EEEAF3", "ink": "#242136", "accent": "#6442BD", "sheet": "#FAF8FF" }, "font": { "family": "DM Sans" }, "paper": { "bg": "clean", "grain": 0, "depth": 1.3 }, "display": { "font": "Bricolage Grotesque", "weight": 750, "flat": true }, "captions": { "style": "clean", "font": "DM Sans", "size": 68 }, "pace": { "speed": 1, "tighten": { "sentence": 0.16, "comma": 0.08, "word": 0.05 } } }
+  }
+}

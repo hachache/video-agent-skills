@@ -1,5 +1,10 @@
 # Shorts codes (Reels, TikTok, YouTube Shorts)
 
+Keep the format, safe areas and legibility checks across directions. The fast
+cutting, blue emphasis and split-screen advice below are Paper defaults. The
+creator's brief and saved project direction own pace, palette, layout and ending;
+read [art-direction.md](art-direction.md) when making those choices.
+
 ## Format
 
 - 1080x1920, 9:16, 30 fps, H.264, AAC 48k. Loudness -14 LUFS integrated, true peak at or below -1 dBTP.
