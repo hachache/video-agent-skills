@@ -24,4 +24,10 @@ require the upstream frameworks, cloud services or subscriptions.
 
 ## Scope of integration
 
+The optional production stack is installed from upstream repositories using the
+exact commits in [stack.lock.json](skills/video-studio/stack.lock.json). Those
+additional skill sources are not vendored in this repository. The installer keeps
+their source records and available upstream license texts, adapting only client
+metadata. Engine packages and their license terms remain separate from the skills.
+
 This repository combines publicly available sources. It does not import a private course, a private repository, restricted brand assets, or files removed from the current upstream release. Herk Edit Kit and Video Talkcraft are not included.

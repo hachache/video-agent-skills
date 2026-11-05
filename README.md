@@ -4,6 +4,23 @@ This adaptation keeps the original 13 skills and local render engine, adds **fou
 
 ## Visual direction
 
+For the full optional production stack, install the pinned upstream skills:
+
+```sh
+python3 skills/video-studio/scripts/install_stack.py
+python3 skills/video-studio/scripts/install_stack.py --check
+```
+
+This adds 18 skills from seven repositories: the official Remotion knowledge pack,
+the four core HyperFrames skills, five official GSAP skills, LottieFiles motion
+design, five iart.ai craft skills, the complete Video Shotcraft library and an
+explicit storyboard workflow from TechNomadCode. Python with PyYAML and the system
+skill installer are required. Existing modified skills are preserved. The
+`video-studio` entry point chooses a route without loading the entire stack at once.
+See [the research and source links](skills/video-studio/references/reddit-findings.md)
+and [the version lock](skills/video-studio/stack.lock.json). Engine npm packages are
+installed per project; upstream SDK terms apply separately.
+
 Paper keeps the original tactile look. Documentary adds editorial type and evidence-led pacing; Kinetic uses bold type and clipped reveals; Studio adds measured depth and product-focused assembly. Each direction has its own type, palette and movement settings. Explicit creator choices and spec overrides still win.
 
 ```sh
@@ -57,6 +74,7 @@ The original Paper direction remains available with these defaults:
 | Skill | What it does |
 |---|---|
 | `/editing` | The entry point. Say what you want ("edit my last take", "scripts for this week", "publish it"), it picks the right skill and continues the video in progress instead of starting over. |
+| `/video-studio` | Coordinates the optional Remotion, HyperFrames, Shotcraft, GSAP and motion-design stack for product films, explainers, animated typography and visual polish. Preserves the engine of an existing project. |
 | `/studio-setup` | Start here. Sets up video editing on your computer and in your project: checks the tools, creates `video-agent/`, prepares the editing studio, writes your `voice.md` from your own videos or a short interview, sets your default style (`/studio-setup style`: one question at a time on your color, paper, fonts, captions, sound, Instagram handle and comment word, the real logos of the tools you name, your logo and end card, previewed on your own footage), pre-approves the commands, and optionally connects Treg, ElevenLabs and Codex. |
 | `/insta-audit` | Installs Treg if needed, connects your Instagram and audits it: your last reels with real stats (views, watch time, saves, shares), what over-performs against your own median, the first seconds of your best and worst reels, and the 3 changes to make, in `audit.md`. `/insta-audit @handle` adds up to 5 competitors and a sourced HTML report (paid calls, price said first). |
 | `/studio-script` | A week of scripts from what really happened in your week, in your voice: 3 hooks per script from 22 formulas, scored, a re-hook, timing checked at your pace, visual notes, then a humanize pass (invisible characters, AI words in English and French, AI sentence shapes, facts checked). Also `viral` (what over-performs in your niche: recent Shorts of 10 to 12 accounts, outliers against each account's median, the first 3 seconds of each, saved to `swipe.md`), `hook <topic>` and `humanize <text>` for any caption or description. |

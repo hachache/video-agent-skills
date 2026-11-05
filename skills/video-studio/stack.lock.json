@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "reviewed": "2026-11-05",
+  "groups": [
+    {
+      "repository": "remotion-dev/skills",
+      "ref": "a2824c67f8b4585c294a8101db9f9f0ad3c643f8",
+      "paths": [
+        "skills/remotion-best-practices"
+      ],
+      "name": null,
+      "method": "download",
+      "license": "Upstream terms",
+      "license_path": null
+    },
+    {
+      "repository": "heygen-com/hyperframes",
+      "ref": "0b355982460e0ca66b6f762da7732d4990c6ddc1",
+      "paths": [
+        "skills/hyperframes",
+        "skills/hyperframes-cli",
+        "skills/hyperframes-registry",
+        "skills/media-use"
+      ],
+      "name": null,
+      "method": "git",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE"
+    },
+    {
+      "repository": "greensock/gsap-skills",
+      "ref": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "paths": [
+        "skills/gsap-core",
+        "skills/gsap-timeline",
+        "skills/gsap-plugins",
+        "skills/gsap-utils",
+        "skills/gsap-performance"
+      ],
+      "name": null,
+      "method": "download",
+      "license": "MIT",
+      "license_path": "LICENSE"
+    },
+    {
+      "repository": "LottieFiles/motion-design-skill",
+      "ref": "f9a8a041b85185ee4881b3471d3415e939aac772",
+      "paths": [
+        "skills/motion-design"
+      ],
+      "name": null,
+      "method": "download",
+      "license": "MIT",
+      "license_path": "LICENSE"
+    },
+    {
+      "repository": "iart-ai/motion-design-skills",
+      "ref": "3c129f769d90a1328c209c386492333c9ac62312",
+      "paths": [
+        "skills/animation-principles",
+        "skills/motion-art-direction",
+        "skills/shot-composition",
+        "skills/beat-sync-editing",
+        "skills/color-motion"
+      ],
+      "name": null,
+      "method": "download",
+      "license": "MIT",
+      "license_path": "LICENSE"
+    },
+    {
+      "repository": "Vincentwei1021/video-shotcraft",
+      "ref": "1266a3ec4831289c4d893d42dd5102723658039a",
+      "paths": [
+        "."
+      ],
+      "name": "video-shotcraft",
+      "method": "download",
+      "license": "Apache-2.0",
+      "license_path": "LICENSE"
+    },
+    {
+      "repository": "TechNomadCode/AI-Product-Development-Toolkit",
+      "ref": "cb7956e66a7ad2c4cd3c8ca07e399c2d1c269607",
+      "paths": [
+        "agent-skills/remotion-video"
+      ],
+      "name": null,
+      "method": "download",
+      "license": "MIT",
+      "license_path": "LICENSE"
+    }
+  ]
+}

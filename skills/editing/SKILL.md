@@ -1,6 +1,6 @@
 ---
 name: editing
-description: Entry point for every video job - routes to studio-setup, insta-audit, studio-script, outliers, short-editing, broll, steal, clips, short-translate, codex-images, vox or publish, and continues the project already in progress. Use when the user says /editing, edit, montage, take, short, reel, video, script, audit, publish, or is not sure which video skill to use.
+description: Entry point for video work. Continue the existing project or route to video-studio for ambitious motion graphics and product films, short-editing for recorded shorts and draft review, or the relevant setup, script, B-roll, clip, translation, image or publishing skill. Use for editing, montage, shorts, reels, videos, scripts, audits or choosing a video workflow.
 metadata:
   argument-hint: '[take | url | slug | path] [brief]'
 ---
@@ -12,6 +12,7 @@ Route the request to the one skill that owns it, then do the work with that skil
 1. Continue before you start. If this conversation already works on a video (a `video-agent/edits/<slug>/` folder, a take just edited, a week of scripts just written), the request is the next step of that project with the skill already in use: apply the change, rerun the step, keep its files, never start it over.
 2. Otherwise read the request and pick the skill:
    - An existing draft to watch, approve, comment on, or revise frame by frame: `short-editing`, its frame review workflow. Continue the existing project and preserve its review history.
+   - A new ambitious product film, cinematic motion graphics, a Remotion/HyperFrames project, or a choice between video workflows: `video-studio`. It selects the owning engine and the relevant installed skills. Keep an existing project's engine.
    - Art direction, animated typography, visual rhythm, or a Documentary/Kinetic/Studio look: `short-editing`, its `references/art-direction.md`. Work in the existing project; use `direct` and `motion` for local presets and reusable components.
    - No `video-agent/` folder yet, first time, tools, voice, permissions, accounts, keys: `studio-setup`. An edit asked before any setup: run `studio-setup` first (or at least its tools step).
    - Their Instagram stats, "what works on my account", an audit of an account or of their competitors: `insta-audit`.
