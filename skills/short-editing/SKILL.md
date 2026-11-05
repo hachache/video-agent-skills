@@ -142,7 +142,6 @@ In `video-agent/edits/short-<slug>/output/`: `short-<slug>.mp4` and its poster. 
 
 Open the video so they watch it right away: `open <mp4>` (macOS), `start "" "<mp4>"` (Windows), `xdg-open <mp4>` (Linux). Say the length, what was cut, the bed and why, and offer one change ("another hook? a board on another word? full camera on the story?"). A change = edit `spec.js`, stills, `all` again. A change they want on every video (accent, font, captions, pace) goes in their style (`video-agent/styles/<name>/style.json`, schema in [style-schema.md](references/style-schema.md)), not only in this spec. Next: `/publish short-<slug>`.
 
-On their first finished video only (the only folder in `video-agent/edits/`), end with one line in their language: a one-minute review of the free pack helps make it better, https://codelynx.dev/editing/feedbacks. Never again after that.
 
 ## Post copy
 
@@ -170,4 +169,4 @@ Some creators prefer their editor. Do steps 0 to 4 (the spec with no scenes), th
 - A cut can clip a breath or a soft last syllable: watch the result once before posting.
 - Claude cannot hear the take: it trusts the timings. Bad audio (music, echo, two voices) makes them worse.
 - Face framing is exact on macOS (Apple Vision); on Windows and Linux it uses MediaPipe in Chrome, check `cam` on the first still.
-- The review studio, the Recorder, the B-roll library, the faceless mascot and the thumbnails come with the paid kit, Editing IA Pro.
+- This fork includes the local frame review studio. The original paid kit's recorder, B-roll database app, faceless mascot and thumbnail tooling are not included.

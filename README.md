@@ -10,7 +10,7 @@ node <short-editing-skill>/engine/short.mjs review video-agent/edits/short-demo
 
 See [the review guide](skills/short-editing/review/README.md) for the workflow and options. Review uses Python 3.9+, FFmpeg and the existing engine; it needs no additional subscription. Run `npm test` from this repository to check timeline conversion, draft snapshots, media seeking and feedback persistence.
 
-Free Claude Code skills to script, edit, translate and publish your videos: short-form (YouTube Shorts, TikTok, Instagram Reels) and full YouTube videos.
+Local agent skills to script, edit, translate and publish your videos: short-form (YouTube Shorts, TikTok, Instagram Reels) and full YouTube videos.
 
 No app, no server, no subscription. The skills tell Claude how to work, and `short-editing` ships its own render engine (Node + Chrome + ffmpeg, whisper.cpp for the words, all on your computer, macOS, Windows and Linux), with six real shorts made with it as examples. Optional: [Treg](https://treg.to) to audit your Instagram and publish on YouTube, Instagram and TikTok, an ElevenLabs key to translate, Codex to generate images.
 
@@ -63,7 +63,7 @@ Every short comes out in the same finished look, with no setting to touch:
 In your project folder:
 
 ```bash
-npx skills add Melvynx/video-agent-skills -a claude-code
+npx skills add hachache/video-agent-skills
 ```
 
 Add `-g` to install them for every project. `npx skills update` gets the latest version.
@@ -72,17 +72,17 @@ Installed before October 2026, with the old `video-*` names? Remove them, then i
 
 ```bash
 npx skills remove video-setup video-script video-viral video-audit video-edit video-steal video-translate video-publish long-to-short-videos -y
-npx skills add Melvynx/video-agent-skills -a claude-code
+npx skills add hachache/video-agent-skills
 ```
 
 `/video-setup` is now `/studio-setup`, `/video-script` `/studio-script`, `/video-viral` `/studio-script viral`, `/video-audit` `/insta-audit`, `/video-edit` `/short-editing`, `/video-steal` `/steal`, `/video-translate` `/short-translate`, `/video-publish` `/publish`, `/long-to-short-videos` `/clips`.
 
-Or paste `https://github.com/Melvynx/video-agent-skills` into Claude Code and ask it to install these skills.
+Or paste `https://github.com/hachache/video-agent-skills` into Claude Code and ask it to install these skills.
 
 Or copy them by hand (into `~/.claude/skills/` instead for every project). macOS and Linux:
 
 ```bash
-git clone https://github.com/Melvynx/video-agent-skills.git
+git clone https://github.com/hachache/video-agent-skills.git
 mkdir -p .claude/skills
 cp -r video-agent-skills/skills/* .claude/skills/
 ```
@@ -90,7 +90,7 @@ cp -r video-agent-skills/skills/* .claude/skills/
 Windows (PowerShell):
 
 ```powershell
-git clone https://github.com/Melvynx/video-agent-skills.git
+git clone https://github.com/hachache/video-agent-skills.git
 New-Item -ItemType Directory -Force .claude\skills | Out-Null
 Copy-Item -Recurse -Force video-agent-skills\skills\* .claude\skills\
 ```
@@ -166,20 +166,16 @@ video-agent/
 
 ## Honest limits
 
-- One layout family on purpose (the split-screen paper look, with paper-only and full-camera views): you change its colors, fonts, captions, pace and sound. No review studio, no recorder, no B-roll database app: the paid course [Editing IA Pro](https://codelynx.dev/editing) adds them.
+- One layout family on purpose (the split-screen paper look, with paper-only and full-camera views): you change its colors, fonts, captions, pace and sound. This fork includes a local frame review studio. A recorder and a B-roll database app are not included.
 - Auto-captions mishear names and numbers. Check them.
 - Without Treg, research is YouTube only and publishing is manual (the skill hands you a ready kit).
 - Translation has no lip-sync: the image stays the original.
 - Generated images need a check: text can come out misspelled.
 - Only download and cut videos you own or have the rights to.
 
-## Tell us how it went
+## Upstream and reuse
 
-Your first video is out? Leave a one-minute review at [codelynx.dev/editing/feedbacks](https://codelynx.dev/editing/feedbacks?utm_source=github&utm_medium=readme&utm_campaign=video-agent-skill): what worked, where you got stuck, what to add. Every answer is read and the pack gets fixed from them.
-
-## Want the full version?
-
-These skills are the free base of [Editing IA Pro](https://codelynx.dev/editing/vsl?utm_source=github&utm_medium=readme&utm_campaign=video-agent-skill). The free pack gets you set up and posting clean videos; the full version does the finishing: the full motion design engine (drawn objects, UI mockups, more layouts and board types), a library of styles, music beds and sound design, a review studio where you comment the video frame by frame, a teleprompter recorder, faceless avatars, covers, thumbnails and titles. Same skill names (`/editing`, `/studio-setup`, `/studio-script`, `/short-editing`, `/steal`, `/insta-audit`, `/publish`...), so moving up changes nothing in how you work.
+This fork builds on Melvyn Malherbe's [Video Agent Skills](https://github.com/Melvynx/video-agent-skills) and Peter Yang's [Video Short](https://github.com/petergyang/video-short). The pinned versions and retained notices are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). No private course files are included.
 
 ## License
 
